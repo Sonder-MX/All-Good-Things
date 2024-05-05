@@ -44,6 +44,30 @@ DATABASE = {
     },
 }
 
+# Task
+TIME_TASKS = {
+    "panel": {
+        # "interval": {
+        #     "seconds": 2,
+        # },
+        "cron": {
+            "hour": 2,
+            "minute": 0,
+            "second": 0,
+        },
+    },
+    "big_screen": {
+        # "interval": {
+        #     "seconds": 5,
+        # },
+        "cron": {
+            "hour": 2,
+            "minute": 30,
+            "second": 0,
+        },
+    },
+}
+
 # utils
 ## qkrequest
 UQ_REQEST_SEND = {
