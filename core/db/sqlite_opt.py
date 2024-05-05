@@ -7,7 +7,7 @@ from utils import logger
 
 class SqliteOpt:
     def __init__(self, path: str):
-        self._conn = sqlite3.connect(path)
+        self._conn = sqlite3.connect(path, check_same_thread=False)
         self._cursor = self._conn.cursor()
         logger.info("Sqlire OPT 初始化...")
 
