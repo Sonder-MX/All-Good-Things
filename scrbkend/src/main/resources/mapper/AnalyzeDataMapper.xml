@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mx.sonder.scrbkend.mapper.AnalyzeDataMapper">
+
+    <insert id="insert">
+        INSERT INTO analyze_data (type, data)
+        VALUES (#{type}, #{data})
+    </insert>
+
+    <select id="pageQuery">
+        SELECT * FROM analyze_data
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND type LIKE '%' || #{keyword} || '%'
+            </if>
+        </where>
+        ORDER BY created DESC
+    </select>
+
+</mapper>

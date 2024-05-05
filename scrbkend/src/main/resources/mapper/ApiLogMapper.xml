@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mx.sonder.scrbkend.mapper.ApiLogMapper">
+    <!-- insertApiLog -->
+    <insert id="insertApiLog">
+        INSERT INTO api_log (api_path, http_method, start_time, spend_time, status, remote_addr)
+        VALUES (#{apiPath}, #{httpMethod}, #{startTime}, #{spendTime}, #{status}, #{remoteAddr})
+    </insert>
+
+    <!-- pageQuery -->
+    <select id="pageQuery">
+        SELECT * FROM api_log
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND api_path LIKE '%' || #{keyword} || '%'
+            </if>
+        </where>
+        ORDER BY start_time DESC
+    </select>
+</mapper>
