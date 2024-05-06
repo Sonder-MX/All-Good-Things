@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import jakarta.servlet.http.HttpServletRequest;
 import mx.sonder.scrbkend.service.ApiLogService;
 import mx.sonder.scrbkend.utils.Result;
 import mx.sonder.scrbkend.entity.ApiLogInfo;
@@ -53,14 +54,25 @@ public class ApiLogAspect {
         apiLogInfo.setStartTime(new Timestamp(startTime));
         apiLogInfo.setSpendTime(spendTime);
         apiLogInfo.setStatus(getResultCode(result));
-        String ip = "未知";
+        String ip = "unknown";
         if (attributes != null) {
-            ip = attributes.getRequest().getRemoteAddr();
+            ip = this.getRealIp(attributes.getRequest());
         }
         apiLogInfo.setRemoteAddr(ip);
         apiLogService.saveApiLog(apiLogInfo);
 
         return result;
+    }
+
+    private String getRealIp(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("X-Real-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = "unknown";
+        }
+        return ip;
     }
 
     @SuppressWarnings("rawtypes")

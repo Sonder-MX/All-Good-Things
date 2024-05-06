@@ -15,6 +15,7 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import mx.sonder.scrbkend.annotation.ApiLog;
 import mx.sonder.scrbkend.entity.Users;
 import mx.sonder.scrbkend.entity.vo.RegOrLoginVO;
 import mx.sonder.scrbkend.entity.vo.TokenVO;
@@ -44,6 +45,7 @@ public class AuthController {
         return Result.ok(base64Img);
     }
 
+    @ApiLog
     @PostMapping("/login")
     public Result<TokenVO> login(HttpSession session, @RequestBody RegOrLoginVO user) {
         String code = (String) session.getAttribute("code");
@@ -59,8 +61,14 @@ public class AuthController {
         return Result.ok(token);
     }
 
+    @ApiLog
     @PostMapping("/register")
     public Result<Void> register(@RequestBody RegOrLoginVO user) {
+        Boolean isSignUp = jwtUtils.getIsSignUp();
+        if (!isSignUp) {
+            return Result.error(403, "注册接口已关闭");
+        }
+
         String msg = userService.registerUser(user);
         if (msg != null) {
             return Result.error(msg);

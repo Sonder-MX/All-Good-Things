@@ -43,7 +43,6 @@ public class WebSocketHandle {
     private void sendToClient(Session session, String topic) {
         try {
             StringRedisTemplate redisTemplate = SpringUtils.getBean(StringRedisTemplate.class);
-            @SuppressWarnings("null")
             String data = redisTemplate.opsForValue().get(topic);
             session.getBasicRemote().sendText(data);
         } catch (Exception e) {

@@ -29,7 +29,6 @@ public class UserService {
         PageHelper.startPage(pageVo.getCurrent(), pageVo.getPageSize());
         Page<Users> pgUsers = userMapper.pageQuery(pageVo);
 
-        @SuppressWarnings("null")
         List<UserInfoVO> uvo = pgUsers.getResult().stream().map(user -> {
             UserInfoVO userInfoVO = new UserInfoVO();
             BeanUtils.copyProperties(user, userInfoVO);

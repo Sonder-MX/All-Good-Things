@@ -38,12 +38,12 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
         }
 
         String token = request.getHeader("Authorization");
-        log.info("Check Token");
         DecodedJWT parseToken = jwtUtils.verifyJwt(token);
         if (parseToken == null) {
             response.setContentType("application/json;charset=UTF-8");
             response.setStatus(401);
             String msg = (token == null) ? "未登录，请先登录" : "登录信息已过期，请重新登录";
+            log.warn("token验证失败，Error Info: {}", msg);
             Result<Void> errInfo = Result.error(401, msg);
             response.getWriter().write(errInfo.toJson());
             return false;

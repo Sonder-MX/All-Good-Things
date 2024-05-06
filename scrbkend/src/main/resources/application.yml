@@ -1,10 +1,18 @@
+server:
+  address: 127.0.0.1
+  port: 9001
 spring:
-  output:
-    ansi:
-      enabled: always
   datasource:
-    url: jdbc:sqlite:D:/GraduationDesign/All-Good-Things/scrbkend/app.db
-    driver-class-name: org.sqlite.JDBC
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/em_bds
+    username: zmax
+    password: 123
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 123456
+      database: 0
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: mx.sonder.scrbkend.entity
@@ -12,6 +20,10 @@ mybatis:
     map-underscore-to-camel-case: true
 
 jwt:
+  is-sign-up: true
   secret: SpringBoot-BitScreen-XVFS-LK8S-96PG-VS9A
-  # expire: 21600
   expire: 21600
+
+py-api:
+  user-agent: data-analysis-core-api
+  token: core-1.0.0

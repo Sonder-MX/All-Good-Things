@@ -16,7 +16,6 @@ public class SpringUtils implements ApplicationContextAware {
         SpringUtils.applicationContext = applicationContext;
     }
 
-    @SuppressWarnings("null")
     public static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }

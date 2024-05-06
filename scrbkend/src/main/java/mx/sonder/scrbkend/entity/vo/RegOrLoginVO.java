@@ -15,6 +15,6 @@ public class RegOrLoginVO implements Serializable {
         if (this.username == null || this.username.trim().isEmpty()) {
             this.username = this.email;
         }
-        return email != null && password != null && !email.trim().isEmpty() && !password.trim().isEmpty();
+        return email != null && email.contains("@") && password != null && !password.trim().isEmpty();
     }
 }

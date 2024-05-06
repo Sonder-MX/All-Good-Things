@@ -9,6 +9,21 @@
             "name": "jwt.expire",
             "type": "java.lang.String",
             "description": "A description for 'jwt.expire'"
+        },
+        {
+            "name": "py-api.user-agent",
+            "type": "java.lang.String",
+            "description": "A description for 'py-api.user-agent'"
+        },
+        {
+            "name": "py-api.token",
+            "type": "java.lang.String",
+            "description": "A description for 'py-api.token'"
+        },
+        {
+            "name": "jwt.is-sign-up",
+            "type": "java.lang.Boolean",
+            "description": "A description for 'jwt.is-sign-up'"
         }
     ]
 }

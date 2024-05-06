@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 import mx.sonder.scrbkend.annotation.ApiLog;
+import mx.sonder.scrbkend.entity.AnalyzeData;
 import mx.sonder.scrbkend.entity.Users;
 import mx.sonder.scrbkend.entity.vo.PageVo;
 import mx.sonder.scrbkend.entity.vo.UserInfoVO;
+import mx.sonder.scrbkend.service.AnalyzeDataService;
 import mx.sonder.scrbkend.service.UserService;
 import mx.sonder.scrbkend.utils.JwtUtils;
 import mx.sonder.scrbkend.utils.PageResult;
@@ -29,6 +31,9 @@ public class UserController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    @Autowired
+    private AnalyzeDataService analyzeDataService;
 
     @ApiLog
     @GetMapping("/info")
@@ -51,6 +56,13 @@ public class UserController {
     @PostMapping("/list")
     public Result<PageResult<UserInfoVO>> getUserList(@RequestBody PageVo pageVo) {
         PageResult<UserInfoVO> data = userService.pageUsers(pageVo);
+        return Result.ok(data);
+    }
+
+    @ApiLog
+    @PostMapping("/analyzeData")
+    public Result<PageResult<AnalyzeData>> analyzeDataLiResult(@RequestBody PageVo pgVo) {
+        PageResult<AnalyzeData> data = analyzeDataService.pageQuery(pgVo);
         return Result.ok(data);
     }
 

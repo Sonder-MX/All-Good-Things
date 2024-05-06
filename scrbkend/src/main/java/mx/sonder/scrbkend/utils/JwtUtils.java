@@ -23,6 +23,9 @@ public class JwtUtils {
     @Value("${jwt.expire}")
     private int expire;
 
+    @Value("${jwt.is-sign-up}")
+    private Boolean isSignUp;
+
     public TokenVO createJwt(Users user) {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         Date expTime = this.expireTime();
@@ -61,5 +64,9 @@ public class JwtUtils {
 
     private Date expireTime() {
         return new Date(System.currentTimeMillis() + this.expire * 1000);
+    }
+
+    public Boolean getIsSignUp() {
+        return this.isSignUp;
     }
 }

@@ -10,7 +10,10 @@
 
     <!-- pageQuery -->
     <select id="pageQuery">
-        SELECT * FROM api_log
+        SELECT
+            id, api_path, http_method, spend_time, status, remote_addr,
+            to_char((api_log.start_time AT TIME ZONE 'Asia/Shanghai'), 'YYYY-MM-DD HH24:MI:SS') AS start_time
+        FROM api_log
         <where>
             <if test="keyword != null and keyword != ''">
                 AND api_path LIKE '%' || #{keyword} || '%'

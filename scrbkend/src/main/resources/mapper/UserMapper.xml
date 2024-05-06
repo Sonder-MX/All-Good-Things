@@ -4,17 +4,20 @@
 <mapper namespace="mx.sonder.scrbkend.mapper.UserMapper">
     <!-- insertUser -->
     <insert id="insertUser">
-        INSERT INTO users (username, email, password, is_active, created)
-        VALUES (#{username}, #{email}, #{password}, #{isActive}, #{created})
+        INSERT INTO users (username, email, password)
+        VALUES (#{username}, #{email}, #{password})
     </insert>
 
     <!-- pageQuery -->
     <select id="pageQuery" resultType="Users">
-        SELECT * FROM users
+        SELECT
+            id, username, email, is_active,
+            to_char((users.created AT TIME ZONE 'Asia/Shanghai'), 'YYYY-MM-DD HH24:MI:SS') AS created
+        FROM users
         <where>
             <if test="keyword != null and keyword != ''">
-                AND username LIKE '%' || #{keyword} || '%'
-            </if>
+            (username LIKE '%' || #{keyword} || '%' OR email LIKE '%' || #{keyword} || '%')
+        </if>
         </where>
         ORDER BY created DESC
     </select>

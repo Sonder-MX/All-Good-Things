@@ -8,7 +8,6 @@ import mx.sonder.scrbkend.entity.AnalyzeData;
 import mx.sonder.scrbkend.websocket.WebSocketHandle;
 
 @Service
-@SuppressWarnings("null")
 public class PyApiService {
 
     @Autowired
