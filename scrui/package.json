@@ -1,0 +1,39 @@
+{
+  "name": "em-bda",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:dev": "vite build --mode development",
+    "build:pro": "vite build --mode production"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@tsparticles/vue3": "^3.0.1",
+    "ant-design-vue": "^3.2.20",
+    "axios": "^1.6.7",
+    "dayjs": "^1.11.10",
+    "echarts": "^4.9.0",
+    "echarts-liquidfill": "^2.0.6",
+    "hotkeys-js": "^3.13.7",
+    "lodash": "^4.17.21",
+    "lowdb": "^6.1.1",
+    "pinia": "^2.1.7",
+    "tsparticles": "^3.3.0",
+    "vue": "^3.4.21",
+    "vue-count-to": "^1.0.13",
+    "vue-router": "^4.3.0",
+    "vue3-seamless-scroll": "^2.0.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.6.2",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "less": "^4.2.0",
+    "less-loader": "^11.1.4",
+    "sass": "^1.71.1",
+    "sass-loader": "^13.3.3",
+    "vite": "^4.5.2"
+  }
+}
