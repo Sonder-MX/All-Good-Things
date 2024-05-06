@@ -3,13 +3,13 @@
 */
 
 // 主色
-$color-primary: #d2b48c;
+$color-primary: #88c7b1;
 
 // 辅助色
-$color-info: #b8c1c5;
-$color-success: #80b178;
-$color-warning: #d8c49a;
-$color-danger: #d1786b;
+$color-info: #c6d4a2;
+$color-success: #85b17e;
+$color-warning: #f0c175;
+$color-danger: #e88f78;
 
 // 文字
 $color-text-main: #333333;
@@ -23,14 +23,11 @@ $color-border-2: #e0e0e0;
 $color-border-3: #f0f0f0;
 $color-border-4: #f5f5f5;
 
-
 // 表单样式
 $form-padding: 16px;
 $form-border-radius: 4px;
 $form-input-height: 40px;
 $form-input-border-width: 1px;
-
-
 
 // 渐变色
 $gradient-1: linear-gradient(to right, #d2b48c, #d1786b);
@@ -42,16 +39,13 @@ $gradient-6: linear-gradient(to right, #d2b48c, #e0e0e0);
 $gradient-7: linear-gradient(to right, #d2b48c, #f0f0f0);
 $gradient-8: linear-gradient(to right, #d2b48c, #f5f5f5);
 
-
 // 背景
 $color-bg: #f1f1f1;
 // 动画
 $animation-duration: 0.3s;
 $animation-timing-function: ease-in-out;
 
-
 @media (prefers-color-scheme: dark) {
-
   /**
 * TODO: 蓝灰色系主题
 */
@@ -98,7 +92,4 @@ $animation-timing-function: ease-in-out;
   // 动画
   $animation-duration: 0.3s;
   $animation-timing-function: ease-in-out;
-
 }
-
-

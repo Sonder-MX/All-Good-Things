@@ -122,5 +122,3 @@ const getExcludedComponents = (route) => {
   return excludedComponents
 }
 </script>
-
-<style scoped lang="scss"></style>

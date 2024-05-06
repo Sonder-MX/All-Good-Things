@@ -5,15 +5,12 @@ export default {
     desc: 'Easy Manage Bus Data Analysis',
   },
 
-  // 快捷键
-  // 支持快捷键 例如 ctrl+shift+s
   hotkey: {
     search: {
       open: 's',
       close: 'esc',
     },
   },
-  // 页脚备案信息
   reference: {
     show: true, //是否展示页脚
     number: '暂未备案', //备案号
